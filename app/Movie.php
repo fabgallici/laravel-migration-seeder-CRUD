@@ -11,4 +11,6 @@ class Movie extends Model
 
     protected $fillable = ['title', 'year', 'overview'];
 
+    // protected $guarded = ['...']; //opposite of protected $fillable, possible empty array all vars are ok to fill
+
 }
