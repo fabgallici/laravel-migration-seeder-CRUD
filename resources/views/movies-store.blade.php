@@ -20,7 +20,7 @@
         <input type="text" name="overview" value="{{ old('overview') }}">
       </div>
 
-      <button type="submit" name="button">SAVE ME</button>
+      <button type="submit" name="button">SAVE ME!</button>
     </form>
 
     @if ($errors->any())

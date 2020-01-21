@@ -12,11 +12,11 @@ class MovieControllerAdv extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index() //Render a list of a resource
     {
         $movies = Movie::all();
 
-        return view('movies', compact('movies'));
+        return view('movies', compact('movies'));  //return view file movies.blade.php
 
     }
 
@@ -25,7 +25,7 @@ class MovieControllerAdv extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create()    //shows a view to create a noew resource
     {
         return view('movies-store');  //forse più senso chiamare file movies.create
     }
@@ -46,7 +46,7 @@ class MovieControllerAdv extends Controller
     //     $movie->save();
     //     return redirect('movies');
     // }
-    public function store(Request $request)
+    public function store(Request $request) //persist the new resource
     {
         // return $request;
         $validateData = $request -> validate([  // request()->validate([...])
@@ -65,11 +65,12 @@ class MovieControllerAdv extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id)   //show a single resource
     {
         // return $id;
         $movie = Movie::findOrFail($id);
         return view('movies-show', compact('movie'));
+        // return view('movies-show', ['movie' => $article]);
     }
     // public function show(Movie $movie) //automatically fetch Movie with that id, improved vers return json
     // {
@@ -84,7 +85,7 @@ class MovieControllerAdv extends Controller
      * @return \Illuminate\Http\Response
      */
     
-    public function edit($id)
+    public function edit($id)   //show a view to edit a single resource
     {
         $movie = Movie::findOrFail($id);
         return view('movies-edit', compact('movie'));
@@ -102,7 +103,7 @@ class MovieControllerAdv extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id)   //persist the edited resource
     {
         $validateData = $request -> validate([
             'title' => 'required',
@@ -122,7 +123,7 @@ class MovieControllerAdv extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id)    //delete the resource
     {
         $movie = Movie::findOrFail($id);
         $movie -> delete();
